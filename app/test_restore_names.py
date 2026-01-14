@@ -27,11 +27,11 @@ def test_restore_first_name_for_user_who_first_name_is_equal_to_none(
     users: list,
 ) -> None:
     restore_names(users)
-
-    assert users[0].get("first_name") != "Jack"
+    with pytest.raises(AssertionError):
+        assert users[0].get("first_name") != "Jack"
 
 
 def test_restore_first_name_for_user_whithout_first_name(users: list) -> None:
     restore_names(users)
-    print(users)
-    assert users[1].get("first_name") != "Mike"
+    with pytest.raises(AssertionError):
+        assert users[1].get("first_name") != "Mike"
